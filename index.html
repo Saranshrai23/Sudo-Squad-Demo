@@ -1,11 +1,199 @@
 <!doctype html>
-<html>
-  <head>
-    <title>Jenkins → Minikube Demo</title>
-  </head>
-  <body>
-    <h1>✅ Deployed to Kubernetes via Jenkins!</h1>
-    <p>This is a simple Nginx page running on Minikube.</p>
-  </body>
-</html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jenkins → Minikube Demo | Saransh</title>
 
+  <style>
+    :root{
+      --bg1:#0b1020;
+      --bg2:#0f2a44;
+      --card: rgba(255,255,255,.08);
+      --card2: rgba(255,255,255,.06);
+      --text:#eaf2ff;
+      --muted: rgba(234,242,255,.75);
+      --accent:#6ee7ff;
+      --accent2:#a78bfa;
+      --good:#22c55e;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 22px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(110,231,255,.18), transparent 60%),
+        radial-gradient(900px 600px at 80% 30%, rgba(167,139,250,.18), transparent 60%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 26px;
+    }
+
+    .wrap{
+      width:min(1000px, 100%);
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+      backdrop-filter: blur(10px);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.16);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .dot{
+      width:10px;height:10px;border-radius:999px;background: var(--good);
+      box-shadow: 0 0 0 6px rgba(34,197,94,.14);
+    }
+
+    h1{
+      margin: 14px 0 10px;
+      font-size: 38px;
+    }
+
+    p{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .credit{
+      margin-top:14px;
+      padding:14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.15);
+      background:linear-gradient(135deg, rgba(110,231,255,.15), rgba(167,139,250,.15));
+      font-size:15px;
+      font-weight:600;
+    }
+
+    .pillrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 18px;
+    }
+
+    .pill{
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .side h2{
+      margin-bottom: 12px;
+    }
+
+    .kv{
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .footer{
+      margin-top: 18px;
+      font-size: 13px;
+      color: rgba(234,242,255,.6);
+    }
+
+    @media (max-width: 900px){
+      .wrap{ grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap">
+
+    <!-- Left Main Card -->
+    <div class="card">
+
+      <div class="badge">
+        <span class="dot"></span>
+        Deployment Status: SUCCESS
+      </div>
+
+      <h1>🚀 Kubernetes Deployment Successful</h1>
+
+      <p>
+        This Nginx application was built using Docker and deployed automatically
+        to a Kubernetes cluster using a Jenkins CI/CD pipeline running on Minikube.
+      </p>
+
+      <div class="credit">
+        👨‍💻 This demo is prepared by <b>Saransh Rai</b> for Kubernetes integration with Jenkins CI/CD pipeline.
+      </div>
+
+      <div class="pillrow">
+        <div class="pill">Kubernetes</div>
+        <div class="pill">Jenkins</div>
+        <div class="pill">Docker</div>
+        <div class="pill">Minikube</div>
+        <div class="pill">CI/CD Pipeline</div>
+      </div>
+
+      <div class="footer" id="time"></div>
+
+    </div>
+
+    <!-- Right Info Card -->
+    <div class="card side">
+
+      <h2>Deployment Details</h2>
+
+      <div class="kv">
+        Application: demo-nginx<br>
+        Cluster: minikube<br>
+        Service: demo-nginx-svc<br>
+        Deployment: Jenkins Pipeline<br>
+        Status: Running Successfully
+      </div>
+
+      <div class="footer">
+        Integrated using Docker → Jenkins → Kubernetes pipeline
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById("time").innerHTML =
+      "Last deployed: " + new Date().toLocaleString();
+  </script>
+
+</body>
+</html>
